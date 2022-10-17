@@ -1,7 +1,7 @@
 package com.formation.velo.service.impl;
 
 import com.formation.velo.api.OpenDataNantesClient;
-import com.formation.velo.api.OpenDataVeloNantes;
+import com.formation.velo.api.OpenData;
 import com.formation.velo.model.Station;
 import com.formation.velo.repository.StationRepository;
 import com.formation.velo.service.StationService;
@@ -57,13 +57,13 @@ public class StationServiceImpl implements StationService {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         OpenDataNantesClient client = retrofit.create(OpenDataNantesClient.class);
-        Call<OpenDataVeloNantes> openDataVeloNantesCall = client.getRecords();
+        Call<OpenData> openDataVeloNantesCall = client.getRecords();
         try {
-            OpenDataVeloNantes openDataVeloNantes = openDataVeloNantesCall.execute().body();
-             System.out.println(openDataVeloNantes.getRecords().length+"ici");
+            OpenData openData = openDataVeloNantesCall.execute().body();
+             System.out.println(openData.getRecords().length+"ici");
 
             // 2 Save records dans stations
-            Arrays.stream(openDataVeloNantes.getRecords()).forEach(record -> {
+            Arrays.stream(openData.getRecords()).forEach(record -> {
                 Optional<Station> station = findByRecordId(record.getRecordid());
 
                 if (station.isPresent()){

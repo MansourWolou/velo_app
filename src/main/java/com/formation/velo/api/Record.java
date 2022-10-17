@@ -1,10 +1,9 @@
 package com.formation.velo.api;
 
+import com.formation.velo.api.velo.Field;
 import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.io.Serializable;
 
 @Getter
 @Setter
