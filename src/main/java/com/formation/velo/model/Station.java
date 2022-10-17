@@ -21,14 +21,14 @@ public class Station implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
+    private String name;
     private Double lattitude;
     private Double longitude;
     private String status;
-    private Integer bike_stands; //     poste de vélo
-    private Integer available_bikes;//  vélos dispo
-    private Integer available_bike_stands;//    poste de vélo dispo
-    private Integer recordId;
+    private Integer bikeStands; //     poste de vélo
+    private Integer availableBikes;//  vélos dispo
+    private Integer availableBikeStands;//    poste de vélo dispo
+    private String recordId;
     private String addresse;
 
     @Override
@@ -37,19 +37,20 @@ public class Station implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
         Station station = (Station) o;
         return Objects.equals(id, station.id) &&
+                Objects.equals(name, station.name) &&
                 Objects.equals(lattitude, station.lattitude) &&
                 Objects.equals(longitude, station.longitude) &&
                 Objects.equals(status, station.status) &&
-                Objects.equals(bike_stands, station.bike_stands) &&
-                Objects.equals(available_bikes, station.available_bikes) &&
-                Objects.equals(available_bike_stands, station.available_bike_stands) &&
+                Objects.equals(bikeStands, station.bikeStands) &&
+                Objects.equals(availableBikes, station.availableBikes) &&
+                Objects.equals(availableBikeStands, station.availableBikeStands) &&
                 Objects.equals(recordId, station.recordId) &&
                 Objects.equals(addresse, station.addresse);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, lattitude,longitude,status,bike_stands,available_bikes,available_bike_stands,recordId,addresse);
+        return Objects.hash(id,name, lattitude,longitude,status,bikeStands,availableBikes,availableBikeStands,recordId,addresse);
     }
 
 
