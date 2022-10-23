@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 public class Record {
     @SerializedName("recordid")
-    private String recordid;
+    private String recordId;
     @SerializedName("fields")
     private Field field;
 }

@@ -10,4 +10,5 @@ import java.util.Optional;
 public interface StationRepository extends JpaRepository<Station, Integer> {
 
     Optional<Station> findByRecordId(String recordId);
+
 }

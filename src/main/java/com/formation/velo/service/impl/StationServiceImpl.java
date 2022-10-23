@@ -62,9 +62,10 @@ public class StationServiceImpl implements StationService {
             OpenData openData = openDataVeloNantesCall.execute().body();
              System.out.println(openData.getRecords().length+"ici");
 
+
             // 2 Save records dans stations
             Arrays.stream(openData.getRecords()).forEach(record -> {
-                Optional<Station> station = findByRecordId(record.getRecordid());
+                Optional<Station> station = findByRecordId(record.getRecordId());
 
                 if (station.isPresent()){
                     // on update la station
@@ -77,14 +78,14 @@ public class StationServiceImpl implements StationService {
                     station.get().setBikeStands(record.getField().getBikeStands());
                     station.get().setAvailableBikeStands(record.getField().getAvailableBikeStands());
                     station.get().setAddresse(record.getField().getAddress());
-                    station.get().setRecordId(record.getRecordid());
+                    station.get().setRecordId(record.getRecordId());
 
                     save(station.get());
                 } else  {
                     System.out.println("il est present");
                     // on crer lastation
                     Station newstation = Station.builder()
-                            .recordId(record.getRecordid())
+                            .recordId(record.getRecordId())
                             .name(record.getField().getName())
                             .lattitude(record.getField().getPosition()[1])
                             .longitude(record.getField().getPosition()[0])
