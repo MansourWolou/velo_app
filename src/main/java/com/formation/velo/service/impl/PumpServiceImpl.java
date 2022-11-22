@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import lombok.extern.java.Log;
+
 
 @Service
 public class PumpServiceImpl implements PumpService {
@@ -49,6 +51,7 @@ public class PumpServiceImpl implements PumpService {
     }
 
 
+
     @Override
     public void saveRecords() {
         // 1 appel opendata
@@ -59,6 +62,7 @@ public class PumpServiceImpl implements PumpService {
         OpenDataNantesPumpClient client = retrofit.create(OpenDataNantesPumpClient.class);
         Call<OpenData> openDataNantesPumpClientCall = client.getRecords();
         try {
+            System.out.println(" \uD83E\uDD78  error ici");
             OpenData openData = openDataNantesPumpClientCall.execute().body();
             System.out.println(openData.getRecords().length+"ici");
 
@@ -77,7 +81,7 @@ public class PumpServiceImpl implements PumpService {
                     pump.get().setDepName(record.getField().getDepName());
                     pump.get().setPrixNom(record.getField().getPrixNom());
                     pump.get().setComCode(record.getField().getComCode());
-                    pump.get().setEpicName(record.getField().getEpicName());
+                    pump.get().setEpciName(record.getField().getEpciName());
                     pump.get().setDepCode(record.getField().getDepCode());
                     pump.get().setPrixID(record.getField().getPrixID());
                     pump.get().setServicesService(record.getField().getServicesService());
@@ -88,7 +92,7 @@ public class PumpServiceImpl implements PumpService {
                     pump.get().setPumpId(record.getField().getPumpId());
                     pump.get().setRegCode(record.getField().getRegCode());
                     pump.get().setAdresse(record.getField().getAddress());
-                    pump.get().setEpciCode(record.getField().getEpicCode());
+                    pump.get().setEpciCode(record.getField().getEpciCode());
                     pump.get().setCp(record.getField().getCp());
                     pump.get().setPrixValeur(record.getField().getPrixValeur());
                     pump.get().setComName(record.getField().getComName());
@@ -107,7 +111,7 @@ public class PumpServiceImpl implements PumpService {
                             .depName(record.getField().getDepName())
                             .prixNom(record.getField().getPrixNom())
                             .comCode(record.getField().getComCode())
-                            .epciName(record.getField().getEpicName())
+                            .epciName(record.getField().getEpciName())
                             .depCode(record.getField().getDepCode())
                             .prixID(record.getField().getPrixID())
                             .servicesService(record.getField().getServicesService())
@@ -118,8 +122,8 @@ public class PumpServiceImpl implements PumpService {
                             .regCode(record.getField().getRegCode())
                             .latitude(record.getField().getGeom()[0])
                             .longitude(record.getField().getGeom()[1])
-                            .addresse(record.getField().getAddress())
-                            .epciCode(record.getField().getEpicCode())
+                            .adresse(record.getField().getAddress())
+                            .epciCode(record.getField().getEpciCode())
                             .cp(record.getField().getCp())
                             .prixValeur(record.getField().getPrixValeur())
                             .comName(record.getField().getComName())
