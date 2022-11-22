@@ -41,7 +41,8 @@ public class Pump implements Serializable {
     private String pumpId;
     private String regCode;
     private String adresse;
-    private double[] geom;
+    private Double latitude;
+    private Double longitude;
     private String epciCode;
     private String cp;
     private double prixValeur;
@@ -71,8 +72,8 @@ public class Pump implements Serializable {
                 Objects.equals(pumpId, pump.pumpId) &&
                 Objects.equals(regCode, pump.regCode) &&
                 Objects.equals(adresse, pump.adresse) &&
-                Objects.equals(geom[0], pump.geom[0]) &&
-                Objects.equals(geom[1], pump.geom[1]) &&
+                Objects.equals(latitude, pump.latitude) &&
+                Objects.equals(longitude, pump.longitude) &&
                 Objects.equals(epciCode, pump.epciCode) &&
                 Objects.equals(cp, pump.cp) &&
                 Objects.equals(prixValeur, pump.prixValeur) &&
@@ -100,7 +101,8 @@ public class Pump implements Serializable {
                 pumpId,
                 regCode,
                 adresse,
-                geom,
+                latitude,
+                longitude,
                 epciCode,
                 cp,
                 prixValeur,
